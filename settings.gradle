@@ -1,3 +1,4 @@
 rootProject.name = 'gj_jewelry'
 
+include 'gj_jewelry-common'
 include 'gj_jewelry-admin-api'
