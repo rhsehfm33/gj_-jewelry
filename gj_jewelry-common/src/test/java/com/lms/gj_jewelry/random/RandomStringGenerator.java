@@ -1,11 +1,6 @@
 package com.lms.gj_jewelry.random;
 
-import com.lms.gj_jewelry.interfaces.User;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Random;
 
 public class RandomStringGenerator {
