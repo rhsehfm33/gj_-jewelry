@@ -1,4 +1,4 @@
-package com.lms.gj_jewelrycommon;
+package com.lms.gj_jewelry;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
