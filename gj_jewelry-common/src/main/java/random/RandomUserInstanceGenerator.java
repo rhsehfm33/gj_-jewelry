@@ -1,4 +1,4 @@
-package com.lms.gj_jewelry.random;
+package random;
 
 import com.lms.gj_jewelry.interfaces.User;
 
@@ -61,6 +61,7 @@ public class RandomUserInstanceGenerator {
 
     public static User generateRandomUser() {
         Random random = new Random();
+        int id = random.nextInt(1000000);
         String newAccount = RandomStringGenerator.generateRandomString(MAX_ACCOUNT_LENGTH);
         String newPassword = RandomStringGenerator.generateRandomString(MAX_PASSWORD_LENGTH);
         String newPhoneNumber = RandomStringGenerator.generateRandomString(MAX_PHONE_NUMBER_LENGTH);
@@ -69,6 +70,7 @@ public class RandomUserInstanceGenerator {
         String newEmail = newEmailLocalString + "@" + newEmailDomainString + ".com";
 
         User randomUser = User.builder()
+                .id((long)id)
                 .account(newAccount)
                 .password(newPassword)
                 .status("Active")

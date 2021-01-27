@@ -1,7 +1,7 @@
 package com.lms.gj_jewelry.domain;
 
 import com.lms.gj_jewelry.interfaces.User;
-import com.lms.gj_jewelry.random.RandomUserInstanceGenerator;
+import random.RandomUserInstanceGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
@@ -80,4 +80,14 @@ public class UserRepositoryTests {
         assertThat(userRepository.findById(9999999999L).isPresent(), is(false));
     }
 
+    @Test
+    public void testFindByAccount() {
+        // Query about accounts that exist. should be true
+        for (User insertedUser : dummyUserList) {
+            assertThat(userRepository.findByAccount(insertedUser.getAccount()).isPresent(), is(true));
+        }
+
+        // Query about accounts that doesn't exist. should be false
+        assertThat(userRepository.findByAccount("!@#!@$!@").isPresent(), is(false));
+    }
 }

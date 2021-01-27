@@ -1,4 +1,4 @@
-package com.lms.gj_jewelry.random;
+package random;
 
 import java.util.HashSet;
 import java.util.Random;
