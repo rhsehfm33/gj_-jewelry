@@ -17,14 +17,14 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("")
-    public List<User> readAll() {
-        List<User> users = userService.readAll();
+    public List<User> getUsers() {
+        List<User> users = userService.getUsers();
 
         return users;
     }
 
     @GetMapping("/{id}")
-    public User readById(@PathVariable Long id) {
-        return userService.readById(id);
+    public User getUserById(@PathVariable Long id) {
+        return userService.getUserById(id);
     }
 }

@@ -31,11 +31,11 @@ public class UserServiceTests {
     }
 
     @Test
-    public void testReadAll() {
+    public void testGetUsers() {
         List<User> userList = RandomUserInstanceGenerator.generateRandomUserList(5);
         given(userRepository.findAll()).willReturn(userList);
 
-        List<User> insertedUserList = userService.readAll();
+        List<User> insertedUserList = userService.getUsers();
 
         verify(userRepository).findAll();
 
@@ -45,11 +45,11 @@ public class UserServiceTests {
     }
 
     @Test
-    public void testReadById() {
+    public void testGetUserById() {
         Optional<User> user = Optional.ofNullable(RandomUserInstanceGenerator.generateRandomUser());
         given(userRepository.findById(any())).willReturn(user);
 
-        User resultUser = userService.readById(1L);
+        User resultUser = userService.getUserById(1L);
 
         assertThat(user.get().equals(resultUser), is(true));
     }

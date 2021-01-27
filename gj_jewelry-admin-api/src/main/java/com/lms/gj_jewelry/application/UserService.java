@@ -20,14 +20,14 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> readAll() {
+    public List<User> getUsers() {
         // TODO: need to apply pagination
         List<User> users = userRepository.findAll();
 
         return users;
     }
 
-    public User readById(Long id) {
+    public User getUserById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new UserIdNotFoundException(id));
     }

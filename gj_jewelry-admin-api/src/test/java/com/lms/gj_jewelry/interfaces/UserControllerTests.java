@@ -49,7 +49,7 @@ public class UserControllerTests {
     public void list() throws Exception {
         List<User> users = new ArrayList<>();
 
-        given(userService.readAll()).willReturn(users);
+        given(userService.getUsers()).willReturn(users);
 
         mvc.perform(get("/users"))
                 .andExpect(status().isOk())
@@ -63,7 +63,7 @@ public class UserControllerTests {
 
         System.out.println(userJson);
 
-        given(userService.readById(user.getId())).willReturn(user);
+        given(userService.getUserById(user.getId())).willReturn(user);
 
         mvc.perform(get("/users/" + user.getId()))
                 .andExpect(status().isOk())
