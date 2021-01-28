@@ -57,7 +57,7 @@ public class User {
 
     // TODO : make User : OrderGroup = 1 : N
 
-    public void updateInformation(User user) {
+    public User updateInformation(User user) {
         this.id = user.getId();
         this.account = user.getAccount();
         this.password = user.getPassword();
@@ -67,5 +67,7 @@ public class User {
         this.createdAt = user.getCreatedAt();
         this.updatedAt = user.getUpdatedAt();
         this.deletedAt = user.getDeletedAt();
+
+        return this;
     }
 }

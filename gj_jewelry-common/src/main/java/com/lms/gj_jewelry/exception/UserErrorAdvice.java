@@ -14,10 +14,4 @@ public class UserErrorAdvice {
         return "";
     }
 
-    @ResponseStatus(value = HttpStatus.NOT_FOUND)
-    @ExceptionHandler(UserAccountNotFoundException.class)
-    public String handleUserAccountNotFoundException() {
-        return "";
-    }
-
 }

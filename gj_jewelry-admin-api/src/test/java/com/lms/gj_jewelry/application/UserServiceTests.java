@@ -2,11 +2,11 @@ package com.lms.gj_jewelry.application;
 
 import com.lms.gj_jewelry.domain.UserRepository;
 import com.lms.gj_jewelry.interfaces.User;
+import com.lms.gj_jewelry.exception.UserIdNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import random.RandomUserInstanceGenerator;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +16,8 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
+import static com.lms.gj_jewelry.test.random.RandomUserInstanceGenerator.generateRandomUser;
+import static com.lms.gj_jewelry.test.random.RandomUserInstanceGenerator.generateRandomUserList;
 
 public class UserServiceTests {
 
@@ -32,7 +34,7 @@ public class UserServiceTests {
 
     @Test
     public void testGetUsers() {
-        List<User> userList = RandomUserInstanceGenerator.generateRandomUserList(5);
+        List<User> userList = generateRandomUserList(5);
         given(userRepository.findAll()).willReturn(userList);
 
         List<User> insertedUserList = userService.getUsers();
@@ -45,12 +47,19 @@ public class UserServiceTests {
     }
 
     @Test
-    public void testGetUserById() {
-        Optional<User> user = Optional.ofNullable(RandomUserInstanceGenerator.generateRandomUser());
+    public void testGetUserByIdIfExists() {
+        Optional<User> user = Optional.ofNullable(generateRandomUser());
+
         given(userRepository.findById(any())).willReturn(user);
 
         User resultUser = userService.getUserById(1L);
 
         assertThat(user.get().equals(resultUser), is(true));
+    }
+
+    @Test(expected = UserIdNotFoundException.class)
+    public void testGetUserByIdIfNotExists() {
+        given(userRepository.findById(any())).willReturn(Optional.empty());
+        userService.getUserById(10000L);
     }
 }

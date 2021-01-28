@@ -1,7 +1,6 @@
 package com.lms.gj_jewelry.domain;
 
 import com.lms.gj_jewelry.interfaces.User;
-import random.RandomUserInstanceGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,11 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static com.lms.gj_jewelry.test.random.RandomUserInstanceGenerator.generateRandomUser;
+import static com.lms.gj_jewelry.test.random.RandomUserInstanceGenerator.generateRandomUserList;
 
 @Slf4j
 @RunWith(SpringRunner.class)
@@ -31,7 +33,7 @@ public class UserRepositoryTests {
     @Before
     public void setUp() {
         dummyUserList = new ArrayList<>();
-        dummyUserList = RandomUserInstanceGenerator.generateRandomUserList(INSERTED_USERS);
+        dummyUserList = generateRandomUserList(INSERTED_USERS);
 
         userRepository.saveAll(dummyUserList);
     }
@@ -89,5 +91,17 @@ public class UserRepositoryTests {
 
         // Query about accounts that doesn't exist. should be false
         assertThat(userRepository.findByAccount("!@#!@$!@").isPresent(), is(false));
+    }
+
+    @Test
+    public void testDelete() {
+        User user = generateRandomUser();
+
+        user.setDeleted(true);
+        user.setDeletedAt(LocalDate.now());
+
+        userRepository.save(user);
+
+        assertThat(userRepository.findByEmail(user.getEmail()).isPresent(), is(false));
     }
 }

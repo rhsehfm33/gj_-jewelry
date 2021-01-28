@@ -1,9 +1,7 @@
 package com.lms.gj_jewelry.interfaces;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.lms.gj_jewelry.application.UserService;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,16 +9,17 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import random.RandomUserInstanceGenerator;
+import org.springframework.test.web.servlet.MvcResult;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.lms.gj_jewelry.test.data_check.MvcResultChecker.isMvcResultEqualTo;
+import static com.lms.gj_jewelry.test.random.RandomUserInstanceGenerator.generateRandomUser;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -33,40 +32,29 @@ public class UserControllerTests {
     @MockBean
     private UserService userService;
 
-    private ObjectMapper objectMapper;
-
-    @Before
-    public void setUp() {
-        // complete objectMapper for converting user object to json
-        // This is used for checking equality
-        objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new JavaTimeModule());
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        objectMapper.setDateFormat(dateFormat);
-    }
-
     @Test
-    public void list() throws Exception {
+    public void getUsers() throws Exception {
         List<User> users = new ArrayList<>();
 
         given(userService.getUsers()).willReturn(users);
 
-        mvc.perform(get("/users"))
+        MvcResult result = mvc.perform(get("/users"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json;charset=UTF-8"));
+                .andReturn();
+
+        assertThat(isMvcResultEqualTo(users, result, new TypeReference<List<User>>(){}), is(true));
     }
 
     @Test
-    public void create() throws Exception {
-        User user = RandomUserInstanceGenerator.generateRandomUser();
-        String userJson = objectMapper.writeValueAsString(user);
-
-        System.out.println(userJson);
+    public void getUserById() throws Exception {
+        User user = generateRandomUser();
 
         given(userService.getUserById(user.getId())).willReturn(user);
 
-        mvc.perform(get("/users/" + user.getId()))
+        MvcResult result = mvc.perform(get("/users/id/" + user.getId()))
                 .andExpect(status().isOk())
-                .andExpect(content().string(userJson));
+                .andReturn();
+
+        assertThat(isMvcResultEqualTo(user, result, User.class), is(true));
     }
 }
