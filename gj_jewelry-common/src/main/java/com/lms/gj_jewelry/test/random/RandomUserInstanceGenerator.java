@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
+import static com.lms.gj_jewelry.test.random.RandomStringGenerator.*;
+
 public class RandomUserInstanceGenerator {
 
     static final int MAX_ACCOUNT_LENGTH = 30;
@@ -41,10 +43,10 @@ public class RandomUserInstanceGenerator {
             HashSet<String> usedEmails,
             HashSet<String> usedPhoneNumbers
     ) {
-        String newAccount = RandomStringGenerator.generateRandomUniqueString(usedAccounts, MAX_ACCOUNT_LENGTH, false);
-        String newPassword = RandomStringGenerator.generateRandomString(MAX_PASSWORD_LENGTH, false);
-        String newPhoneNumber = RandomStringGenerator.generateRandomUniqueString(usedPhoneNumbers, MAX_PHONE_NUMBER_LENGTH, true);
-        String newEmail = RandomStringGenerator.generateRandomUniqueEmail(usedEmails, MAX_EMAIL_LOCAL_LENGTH, MAX_EMAIL_DOMAIN_LENGTH);
+        String newAccount = generateRandomUniqueString(usedAccounts, MAX_ACCOUNT_LENGTH, false);
+        String newPassword = generateRandomString(MAX_PASSWORD_LENGTH, false);
+        String newPhoneNumber = generateRandomUniqueString(usedPhoneNumbers, MAX_PHONE_NUMBER_LENGTH, true);
+        String newEmail = generateRandomUniqueEmail(usedEmails, MAX_EMAIL_LOCAL_LENGTH, MAX_EMAIL_DOMAIN_LENGTH);
 
         User randomUser = User.builder()
                 .id(id)
@@ -62,11 +64,11 @@ public class RandomUserInstanceGenerator {
     public static User generateRandomUser() {
         Random random = new Random();
         int id = random.nextInt(1000000);
-        String newAccount = RandomStringGenerator.generateRandomString(MAX_ACCOUNT_LENGTH, false);
-        String newPassword = RandomStringGenerator.generateRandomString(MAX_PASSWORD_LENGTH, false);
-        String newPhoneNumber = RandomStringGenerator.generateRandomString(MAX_PHONE_NUMBER_LENGTH, true);
-        String newEmailLocalString = RandomStringGenerator.generateRandomString(MAX_EMAIL_LOCAL_LENGTH, false);
-        String newEmailDomainString = RandomStringGenerator.generateRandomString(MAX_EMAIL_DOMAIN_LENGTH, true);
+        String newAccount = generateRandomString(MAX_ACCOUNT_LENGTH, false);
+        String newPassword = generateRandomString(MAX_PASSWORD_LENGTH, false);
+        String newPhoneNumber = generateRandomString(MAX_PHONE_NUMBER_LENGTH, true);
+        String newEmailLocalString = generateRandomString(MAX_EMAIL_LOCAL_LENGTH, false);
+        String newEmailDomainString = generateRandomString(MAX_EMAIL_DOMAIN_LENGTH, true);
         String newEmail = newEmailLocalString + "@" + newEmailDomainString + ".com";
 
         User randomUser = User.builder()
