@@ -10,14 +10,15 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.List;
 
 @EqualsAndHashCode
-@ToString
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "{orderDetailList}")
 @Where(clause = "deleted = false")
 public class User {
 
@@ -55,7 +56,9 @@ public class User {
 
     private LocalDate deletedAt;
 
-    // TODO : make User : OrderGroup = 1 : N
+    // User : OrderDetail =  1 : N
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private List<OrderDetail> orderDetailList;
 
     public User updateInformation(User user) {
         this.id = user.getId();
@@ -67,6 +70,7 @@ public class User {
         this.createdAt = user.getCreatedAt();
         this.updatedAt = user.getUpdatedAt();
         this.deletedAt = user.getDeletedAt();
+        this.orderDetailList = user.getOrderDetailList();
 
         return this;
     }
