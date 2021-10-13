@@ -13,14 +13,17 @@ public class CustomerApiUserErrorAdvice extends UserErrorAdvice {
     public String handleUserAccountNotFoundException() {
         return "";
     }
+
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     @ExceptionHandler(UserEmailNotFoundException.class)
     public String handleUserEmailNotFoundException() {
         return "";
     }
+
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     @ExceptionHandler(UserPhoneNumberNotFoundException.class)
     public String handleUserPhoneNumberNotFoundException() {
         return "";
     }
+
 }
