@@ -1,5 +1,6 @@
 package com.lms.gj_jewelry.interfaces;
 
+import com.lms.gj_jewelry.enumclass.ItemCategory;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Where;
@@ -38,6 +39,10 @@ public class Item {
     @NotEmpty
     private String content;
 
+    @NotEmpty
+    @Enumerated(EnumType.STRING)
+    private ItemCategory category;
+
     private BigDecimal price;
 
     @CreatedDate
@@ -54,10 +59,6 @@ public class Item {
     // Item : OrderDetail =  1 : N
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
     private List<OrderDetail> orderDetailList;
-
-    // Item : Category  = N : 1
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Category category;
 
     // Item : ItemImage =  1 : N
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
