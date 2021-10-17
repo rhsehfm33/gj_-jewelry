@@ -31,14 +31,14 @@ public class User {
     @Column(unique = true)
     private String account;
 
+    @Column(unique = true)
+    private String email;
+
     @NotEmpty
     private String password;
 
     @NotEmpty
     private String status;
-
-    @Column(unique = true)
-    private String email;
 
     @Column(unique = true)
     @NotEmpty
