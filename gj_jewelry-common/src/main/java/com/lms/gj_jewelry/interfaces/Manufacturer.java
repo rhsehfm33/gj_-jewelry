@@ -15,7 +15,7 @@ import java.util.List;
 @Entity
 @Data
 @Builder
-@ToString(exclude = {"item"})
+@ToString(exclude = {"itemList"})
 public class Manufacturer {
 
     @Id
@@ -39,11 +39,10 @@ public class Manufacturer {
 
     private String description;
 
-    @OneToOne()
     private LocalDate foundingDate;
 
-    // Manufacturer : Item = N : 1
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Item item;
+    // Manufacturer : Item = 1 : N
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "manufacturer")
+    private List<Item> itemList;
 
 }
