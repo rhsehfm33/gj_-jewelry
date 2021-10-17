@@ -26,7 +26,6 @@ public class User {
     @GeneratedValue
     private Long id;
 
-    // TODO: make these as enumerated values
     @NotEmpty
     @Column(unique = true)
     private String account;
@@ -37,6 +36,7 @@ public class User {
     @NotEmpty
     private String password;
 
+    // TODO: make these as enumerated values
     @NotEmpty
     private String status;
 
