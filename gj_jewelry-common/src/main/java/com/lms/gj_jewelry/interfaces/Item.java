@@ -20,7 +20,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"orderDetailList", "ItemImageList"})
+@ToString(exclude = {"orderDetailList", "ItemImageList", "manufacturerList"})
 @Where(clause = "deleted = false")
 public class Item {
 
@@ -63,5 +63,9 @@ public class Item {
     // Item : ItemImage =  1 : N
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
     private List<ItemImage> itemImageList;
+
+    // Item : Manufacturer = 1 : N
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
+    private List<Item> manufacturerList;
 
 }
