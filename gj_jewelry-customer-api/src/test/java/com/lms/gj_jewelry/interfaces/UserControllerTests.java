@@ -46,7 +46,7 @@ public class UserControllerTests {
 
     @Test
     public void testRegisterUser() throws Exception {
-        given(userService.registerUser(any())).willReturn(testUser);
+        given(userService.createUser(any())).willReturn(testUser);
 
         MvcResult result = mvc.perform(post("/users")
                 .contentType(MediaType.APPLICATION_JSON)

@@ -20,7 +20,7 @@ public class UserController {
     public User registerUser(
             @RequestBody @Valid User user
     ) {
-        return userService.registerUser(user);
+        return userService.createUser(user);
     }
 
     @GetMapping("")

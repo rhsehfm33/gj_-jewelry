@@ -43,7 +43,7 @@ public class UserServiceTests {
     public void testRegisterUser() {
         given(userRepository.save(any())).willReturn(testUser);
 
-        User newUser = userService.registerUser(testUser);
+        User newUser = userService.createUser(testUser);
 
         assertThat(newUser.equals(testUser), is(true));
     }
