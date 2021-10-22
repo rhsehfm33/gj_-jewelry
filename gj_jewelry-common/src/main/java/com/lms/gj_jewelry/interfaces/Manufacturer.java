@@ -29,6 +29,13 @@ public class Manufacturer {
     @NotEmpty
     private String password;
 
+    @Column(unique = true)
+    private String email;
+
+    @Column(unique = true)
+    @NotEmpty
+    private String phoneNumber;
+
     @NotEmpty
     private String name;
 
