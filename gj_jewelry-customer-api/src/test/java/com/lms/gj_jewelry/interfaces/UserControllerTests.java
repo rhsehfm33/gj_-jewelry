@@ -17,8 +17,8 @@ import java.util.List;
 
 import static com.lms.gj_jewelry.test.data_check.JsonObjectConverter.convertObjectToJson;
 import static com.lms.gj_jewelry.test.data_check.MvcResultChecker.isMvcResultEqualTo;
-import static com.lms.gj_jewelry.test.random.RandomUserInstanceGenerator.generateRandomUser;
-import static com.lms.gj_jewelry.test.random.RandomUserInstanceGenerator.generateRandomUserList;
+import static com.lms.gj_jewelry.test.random.RandomUserGenerator.generateRandomUser;
+import static com.lms.gj_jewelry.test.random.RandomUserGenerator.generateRandomUserList;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.any;

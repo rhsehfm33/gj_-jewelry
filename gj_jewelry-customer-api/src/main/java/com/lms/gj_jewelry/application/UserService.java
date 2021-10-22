@@ -28,6 +28,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    // TODO: Need to change this as pagination
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
@@ -56,7 +57,7 @@ public class UserService {
         User newUser = userRepository.findById(user.getId())
                 .orElseThrow(() -> new UserIdNotFoundException(user.getId()));
 
-        newUser.updateInformation(user);
+        userRepository.save(user);
 
         return newUser;
     }

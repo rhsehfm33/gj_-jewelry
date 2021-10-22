@@ -60,18 +60,4 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<OrderDetail> orderDetailList;
 
-    public User updateInformation(User user) {
-        this.id = user.getId();
-        this.account = user.getAccount();
-        this.password = user.getPassword();
-        this.status = user.getStatus();
-        this.email = user.getEmail();
-        this.phoneNumber = user.getPhoneNumber();
-        this.createdAt = user.getCreatedAt();
-        this.updatedAt = user.getUpdatedAt();
-        this.deletedAt = user.getDeletedAt();
-        this.orderDetailList = user.getOrderDetailList();
-
-        return this;
-    }
 }

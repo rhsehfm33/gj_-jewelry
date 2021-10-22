@@ -10,7 +10,7 @@ import java.util.Random;
 
 import static com.lms.gj_jewelry.test.random.RandomStringGenerator.*;
 
-public class RandomUserInstanceGenerator {
+public class RandomUserGenerator {
 
     static final int MAX_ACCOUNT_LENGTH = 30;
     static final int MAX_PASSWORD_LENGTH = 100;

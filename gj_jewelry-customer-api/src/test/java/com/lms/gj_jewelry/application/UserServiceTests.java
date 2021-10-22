@@ -15,12 +15,12 @@ import org.mockito.MockitoAnnotations;
 import java.util.List;
 import java.util.Optional;
 
+import static com.lms.gj_jewelry.test.random.RandomUserGenerator.generateRandomUser;
+import static com.lms.gj_jewelry.test.random.RandomUserGenerator.generateRandomUserList;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
-import static com.lms.gj_jewelry.test.random.RandomUserInstanceGenerator.generateRandomUser;
-import static com.lms.gj_jewelry.test.random.RandomUserInstanceGenerator.generateRandomUserList;
 
 @Slf4j
 public class UserServiceTests {
