@@ -40,7 +40,7 @@ public class UserServiceTests {
     }
 
     @Test
-    public void testRegisterUser() {
+    public void testCreateUser() {
         given(userRepository.save(any())).willReturn(testUser);
 
         User newUser = userService.createUser(testUser);

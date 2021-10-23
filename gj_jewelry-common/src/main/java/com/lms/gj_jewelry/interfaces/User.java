@@ -18,7 +18,6 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "{orderDetailList}")
 @Where(clause = "deleted = false")
 public class User {
 
