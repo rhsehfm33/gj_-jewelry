@@ -38,7 +38,7 @@ public class RandomStringGenerator {
         do {
             int stringLength = random.nextInt(len) + 1;
             randomString = generateRandomString(stringLength, onlyNumber);
-        } while (usedStrings.contains(randomString) == true);
+        } while (usedStrings != null && usedStrings.contains(randomString) == true);
 
         return randomString;
     }
@@ -52,7 +52,7 @@ public class RandomStringGenerator {
             String emailLocalString = generateRandomString(emailLocalLength, false);
             String emailDomainString = generateRandomString(emailDomainLength, false);
             randomEmail = emailLocalString + "@" + emailDomainString + ".com";
-        } while (usedEmails != null || usedEmails.contains(randomEmail) == true);
+        } while (usedEmails != null && usedEmails.contains(randomEmail) == true);
 
         return randomEmail;
     }
