@@ -49,12 +49,12 @@ public class UserServiceTests {
     }
 
     @Test
-    public void testGetAllUsers() {
+    public void testGetUsers() {
         List<User> users = generateRandomUserList(5);
 
         given(userRepository.findAll()).willReturn(users);
 
-        List<User> searchedUsers = userService.getAllUsers();
+        List<User> searchedUsers = userService.getUsers();
 
         assertThat(searchedUsers.equals(users), is(true));
     }

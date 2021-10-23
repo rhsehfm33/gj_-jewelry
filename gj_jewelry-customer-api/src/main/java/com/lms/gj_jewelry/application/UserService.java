@@ -29,7 +29,7 @@ public class UserService {
     }
 
     // TODO: Need to change this as pagination
-    public List<User> getAllUsers() {
+    public List<User> getUsers() {
         return userRepository.findAll();
     }
 

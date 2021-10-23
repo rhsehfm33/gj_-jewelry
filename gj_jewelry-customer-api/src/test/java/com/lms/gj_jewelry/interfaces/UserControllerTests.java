@@ -61,7 +61,7 @@ public class UserControllerTests {
     public void testGetUsers() throws Exception {
         List<User> users = generateRandomUserList(5);
 
-        given(userService.getAllUsers()).willReturn(users);
+        given(userService.getUsers()).willReturn(users);
 
         MvcResult result = mvc.perform(get("/users"))
                 .andExpect(status().isOk())
