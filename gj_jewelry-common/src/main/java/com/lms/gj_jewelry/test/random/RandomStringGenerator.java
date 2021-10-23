@@ -43,14 +43,16 @@ public class RandomStringGenerator {
         return randomString;
     }
 
-    public static String generateRandomUniqueEmail(HashSet<String> usedEmails, int emailLocalLength, int emailDomainLength) {
+    public static String generateRandomUniqueEmail(HashSet<String> usedEmails, int totalLength) {
         String randomEmail;
 
         do {
-            String emailLocalString = generateRandomString(random.nextInt(emailLocalLength) + 1, false);
-            String emailDomainString = generateRandomString(random.nextInt(emailDomainLength) + 1, false);
+            int emailLocalLength = random.nextInt(totalLength - 1) + 1;
+            int emailDomainLength = totalLength - emailLocalLength;
+            String emailLocalString = generateRandomString(emailLocalLength, false);
+            String emailDomainString = generateRandomString(emailDomainLength, false);
             randomEmail = emailLocalString + "@" + emailDomainString + ".com";
-        } while (usedEmails.contains(randomEmail) == true);
+        } while (usedEmails != null || usedEmails.contains(randomEmail) == true);
 
         return randomEmail;
     }

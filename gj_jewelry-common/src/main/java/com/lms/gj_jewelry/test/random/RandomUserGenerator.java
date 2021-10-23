@@ -14,8 +14,7 @@ public class RandomUserGenerator {
 
     static final int MAX_ACCOUNT_LENGTH = 30;
     static final int MAX_PASSWORD_LENGTH = 100;
-    static final int MAX_EMAIL_LOCAL_LENGTH = 40;
-    static final int MAX_EMAIL_DOMAIN_LENGTH = 40;
+    static final int MAX_EMAIL_LENGTH = 80;
     static final int MAX_PHONE_NUMBER_LENGTH = 13;
 
     public static List<User> generateRandomUserList(int neededUsers) {
@@ -46,7 +45,7 @@ public class RandomUserGenerator {
         String newAccount = generateRandomUniqueString(usedAccounts, MAX_ACCOUNT_LENGTH, false);
         String newPassword = generateRandomString(MAX_PASSWORD_LENGTH, false);
         String newPhoneNumber = generateRandomUniqueString(usedPhoneNumbers, MAX_PHONE_NUMBER_LENGTH, true);
-        String newEmail = generateRandomUniqueEmail(usedEmails, MAX_EMAIL_LOCAL_LENGTH, MAX_EMAIL_DOMAIN_LENGTH);
+        String newEmail = generateRandomUniqueEmail(usedEmails, MAX_EMAIL_LENGTH);
 
         User randomUser = User.builder()
                 .id(id)
@@ -66,9 +65,7 @@ public class RandomUserGenerator {
         int id = random.nextInt(1000000);
         String newAccount = generateRandomString(MAX_ACCOUNT_LENGTH, false);
         String newPassword = generateRandomString(MAX_PASSWORD_LENGTH, false);
-        String newEmailLocalString = generateRandomString(MAX_EMAIL_LOCAL_LENGTH, false);
-        String newEmailDomainString = generateRandomString(MAX_EMAIL_DOMAIN_LENGTH, false);
-        String newEmail = newEmailLocalString + "@" + newEmailDomainString + ".com";
+        String newEmail = generateRandomUniqueEmail(null, MAX_EMAIL_LENGTH);
         String newPhoneNumber = generateRandomString(MAX_PHONE_NUMBER_LENGTH, true);
 
         User randomUser = User.builder()
