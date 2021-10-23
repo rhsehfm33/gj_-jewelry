@@ -32,11 +32,12 @@ public class Manufacturer {
     @Column(unique = true)
     private String email;
 
-    @Column(unique = true)
     @NotEmpty
+    @Column(unique = true)
     private String phoneNumber;
 
     @NotEmpty
+    @Column(unique = true)
     private String name;
 
     private String country;
