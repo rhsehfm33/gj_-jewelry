@@ -1,4 +1,4 @@
-package com.lms.gj_jewelry.interfaces;
+package com.lms.gj_jewelry.domain;
 
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;

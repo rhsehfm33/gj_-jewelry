@@ -4,7 +4,7 @@ import com.lms.gj_jewelry.domain.UserRepository;
 import com.lms.gj_jewelry.exception.UserAccountNotFoundException;
 import com.lms.gj_jewelry.exception.UserEmailNotFoundException;
 import com.lms.gj_jewelry.exception.UserPhoneNumberNotFoundException;
-import com.lms.gj_jewelry.interfaces.User;
+import com.lms.gj_jewelry.domain.User;
 import com.lms.gj_jewelry.exception.UserIdNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;

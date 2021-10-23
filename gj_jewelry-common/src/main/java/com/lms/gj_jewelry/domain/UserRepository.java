@@ -1,6 +1,5 @@
 package com.lms.gj_jewelry.domain;
 
-import com.lms.gj_jewelry.interfaces.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

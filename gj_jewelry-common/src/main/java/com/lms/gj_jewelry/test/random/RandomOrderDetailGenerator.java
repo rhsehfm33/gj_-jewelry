@@ -1,7 +1,7 @@
 package com.lms.gj_jewelry.test.random;
 
-import com.lms.gj_jewelry.interfaces.OrderDetail;
-import com.lms.gj_jewelry.interfaces.User;
+import com.lms.gj_jewelry.domain.OrderDetail;
+import com.lms.gj_jewelry.domain.User;
 
 import java.math.BigInteger;
 import java.time.LocalDate;

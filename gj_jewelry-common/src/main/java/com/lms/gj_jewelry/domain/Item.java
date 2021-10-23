@@ -1,4 +1,4 @@
-package com.lms.gj_jewelry.interfaces;
+package com.lms.gj_jewelry.domain;
 
 import com.lms.gj_jewelry.enumclass.ItemCategory;
 import lombok.*;
@@ -20,7 +20,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"orderDetailList", "ItemImageList", "manufacturer"})
+@ToString(exclude = {"orderDetailList", "manufacturer"})
 @Where(clause = "deleted = false")
 public class Item {
 

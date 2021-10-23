@@ -1,6 +1,6 @@
 package com.lms.gj_jewelry.test.random;
 
-import com.lms.gj_jewelry.interfaces.User;
+import com.lms.gj_jewelry.domain.User;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

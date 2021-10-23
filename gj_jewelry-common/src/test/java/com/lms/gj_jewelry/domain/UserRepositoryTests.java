@@ -1,6 +1,5 @@
 package com.lms.gj_jewelry.domain;
 
-import com.lms.gj_jewelry.interfaces.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;

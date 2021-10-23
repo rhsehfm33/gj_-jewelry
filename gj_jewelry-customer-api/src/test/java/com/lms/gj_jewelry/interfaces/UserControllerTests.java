@@ -2,6 +2,7 @@ package com.lms.gj_jewelry.interfaces;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.lms.gj_jewelry.application.UserService;
+import com.lms.gj_jewelry.domain.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

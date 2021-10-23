@@ -1,7 +1,7 @@
 package com.lms.gj_jewelry.application;
 
 import com.lms.gj_jewelry.domain.UserRepository;
-import com.lms.gj_jewelry.interfaces.User;
+import com.lms.gj_jewelry.domain.User;
 import com.lms.gj_jewelry.exception.UserIdNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
