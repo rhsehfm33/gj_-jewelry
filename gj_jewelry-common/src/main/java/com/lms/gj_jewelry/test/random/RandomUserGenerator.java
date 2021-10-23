@@ -66,10 +66,10 @@ public class RandomUserGenerator {
         int id = random.nextInt(1000000);
         String newAccount = generateRandomString(MAX_ACCOUNT_LENGTH, false);
         String newPassword = generateRandomString(MAX_PASSWORD_LENGTH, false);
-        String newPhoneNumber = generateRandomString(MAX_PHONE_NUMBER_LENGTH, true);
         String newEmailLocalString = generateRandomString(MAX_EMAIL_LOCAL_LENGTH, false);
-        String newEmailDomainString = generateRandomString(MAX_EMAIL_DOMAIN_LENGTH, true);
+        String newEmailDomainString = generateRandomString(MAX_EMAIL_DOMAIN_LENGTH, false);
         String newEmail = newEmailLocalString + "@" + newEmailDomainString + ".com";
+        String newPhoneNumber = generateRandomString(MAX_PHONE_NUMBER_LENGTH, true);
 
         User randomUser = User.builder()
                 .id((long)id)
