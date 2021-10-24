@@ -1,9 +1,7 @@
 package com.lms.gj_jewelry.test.random;
 
-import com.lms.gj_jewelry.interfaces.Manufacturer;
-import com.lms.gj_jewelry.interfaces.Manufacturer;
+import com.lms.gj_jewelry.domain.Manufacturer;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -19,7 +17,7 @@ public class RandomManufacturerGenerator {
     static final int MAX_PHONE_NUMBER_LENGTH = 13;
     static final int MAX_NAME_LENGTH = 100;
 
-    public static List<Manufacturer> generateRandomUniqueManufacturerList(int neededManufacturers) {
+    public static List<Manufacturer> generateRandomManufacturerList(int neededManufacturers) {
         List<Manufacturer> manufacturerList = new ArrayList<>();
 
         HashSet<String> usedAccounts = new HashSet<>();
@@ -72,7 +70,7 @@ public class RandomManufacturerGenerator {
         int id = random.nextInt(1000000);
         String newAccount = generateRandomString(MAX_ACCOUNT_LENGTH, false);
         String newPassword = generateRandomString(MAX_PASSWORD_LENGTH, false);
-        String newEmail = generateRandomUniqueEmail(null, MAX_EMAIL_LENGTH)
+        String newEmail = generateRandomUniqueEmail(null, MAX_EMAIL_LENGTH);
         String newPhoneNumber = generateRandomString(MAX_PHONE_NUMBER_LENGTH, true);
         String newName = generateRandomString(MAX_NAME_LENGTH, false);
 
