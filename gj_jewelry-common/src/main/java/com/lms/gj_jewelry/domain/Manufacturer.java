@@ -1,9 +1,7 @@
 package com.lms.gj_jewelry.domain;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
@@ -15,6 +13,8 @@ import java.util.List;
 @Entity
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString(exclude = {"itemList"})
 public class Manufacturer {
 
@@ -48,6 +48,11 @@ public class Manufacturer {
     private String description;
 
     private LocalDate foundingDate;
+
+    @ColumnDefault("0")
+    private boolean deleted;
+
+    private LocalDate deletedAt;
 
     // Manufacturer : Item = 1 : N
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "manufacturer")
