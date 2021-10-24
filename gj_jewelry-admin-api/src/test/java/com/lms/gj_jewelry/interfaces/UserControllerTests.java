@@ -39,7 +39,7 @@ public class UserControllerTests {
 
         given(userService.getUsers()).willReturn(users);
 
-        MvcResult result = mvc.perform(get("/users"))
+        MvcResult result = mvc.perform(get("/user/all"))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -52,7 +52,7 @@ public class UserControllerTests {
 
         given(userService.getUserById(user.getId())).willReturn(user);
 
-        MvcResult result = mvc.perform(get("/users/id/" + user.getId()))
+        MvcResult result = mvc.perform(get("/user/id/" + user.getId()))
                 .andExpect(status().isOk())
                 .andReturn();
 

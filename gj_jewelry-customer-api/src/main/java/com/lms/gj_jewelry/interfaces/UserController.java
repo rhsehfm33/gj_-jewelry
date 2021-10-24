@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@RequestMapping(value="/users", produces = "application/json;charset=utf-8")
+@RequestMapping(value="/user", produces = "application/json;charset=utf-8")
 @RestController
 public class UserController {
 
@@ -18,13 +18,13 @@ public class UserController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public User registerUser(
+    public User createUser(
             @RequestBody @Valid User user
     ) {
         return userService.createUser(user);
     }
 
-    @GetMapping("")
+    @GetMapping("/all")
     public List<User> getUsers() {
         return userService.getUsers();
     }

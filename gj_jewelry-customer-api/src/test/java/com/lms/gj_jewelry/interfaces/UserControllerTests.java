@@ -46,10 +46,10 @@ public class UserControllerTests {
     }
 
     @Test
-    public void testRegisterUser() throws Exception {
+    public void testCreateUser() throws Exception {
         given(userService.createUser(any())).willReturn(testUser);
 
-        MvcResult result = mvc.perform(post("/users")
+        MvcResult result = mvc.perform(post("/user")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(convertObjectToJson(testUser)))
                 .andExpect(status().isCreated())
@@ -64,7 +64,7 @@ public class UserControllerTests {
 
         given(userService.getUsers()).willReturn(users);
 
-        MvcResult result = mvc.perform(get("/users"))
+        MvcResult result = mvc.perform(get("/user/all"))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -75,7 +75,7 @@ public class UserControllerTests {
     public void testGetUserById() throws Exception {
         given(userService.getUserById(any())).willReturn(testUser);
 
-        MvcResult result = mvc.perform(get("/users/id/" + testUser.getId()))
+        MvcResult result = mvc.perform(get("/user/id/" + testUser.getId()))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -86,7 +86,7 @@ public class UserControllerTests {
     public void testGetUserByAccount() throws Exception {
         given(userService.getUserByAccount(any())).willReturn(testUser);
 
-        MvcResult result = mvc.perform(get("/users/account/" + testUser.getEmail()))
+        MvcResult result = mvc.perform(get("/user/account/" + testUser.getEmail()))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -97,7 +97,7 @@ public class UserControllerTests {
     public void testGetUserByPhoneNumber() throws Exception {
         given(userService.getUserByPhoneNumber(any())).willReturn(testUser);
 
-        MvcResult result = mvc.perform(get("/users/phoneNumber/" + testUser.getEmail()))
+        MvcResult result = mvc.perform(get("/user/phoneNumber/" + testUser.getEmail()))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -108,7 +108,7 @@ public class UserControllerTests {
     public void testGetUserByEmail() throws Exception {
         given(userService.getUserByEmail(any())).willReturn(testUser);
 
-        MvcResult result = mvc.perform(get("/users/email/" + testUser.getEmail()))
+        MvcResult result = mvc.perform(get("/user/email/" + testUser.getEmail()))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -119,7 +119,7 @@ public class UserControllerTests {
     public void testUpdateUser() throws Exception {
         given(userService.updateUser(any())).willReturn(testUser);
 
-        MvcResult result = mvc.perform(patch("/users")
+        MvcResult result = mvc.perform(patch("/user")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(convertObjectToJson(testUser)))
                 .andExpect(status().isOk())
@@ -130,7 +130,7 @@ public class UserControllerTests {
 
     @Test
     public void testDeleteUser() throws Exception {
-        mvc.perform(delete("/users/id/" + testUser.getId()))
+        mvc.perform(delete("/user/id/" + testUser.getId()))
                 .andExpect(status().isOk());
 
         verify(userService).deleteUser(testUser.getId());

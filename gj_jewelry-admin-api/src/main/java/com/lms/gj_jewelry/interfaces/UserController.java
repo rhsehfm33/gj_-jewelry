@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RequestMapping(value="/users", produces = "application/json;charset=utf-8")
+@RequestMapping(value="/user", produces = "application/json;charset=utf-8")
 @RestController
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("")
+    @GetMapping("/all")
     public List<User> getUsers() {
         return userService.getUsers();
     }

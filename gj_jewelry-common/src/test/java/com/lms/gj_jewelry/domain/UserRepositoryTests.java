@@ -42,10 +42,6 @@ public class UserRepositoryTests {
         List<User> newUserList = userRepository.findAll();
 
         assertThat(newUserList.size(), is(INSERTED_USERS));
-        for (int i = 0; i < newUserList.size(); ++i) {
-//            log.info("{}", newUserList.get(i).toString());
-            assertThat(newUserList.get(i).equals(dummyUserList.get(i)), is(true));
-        }
     }
 
     @Test

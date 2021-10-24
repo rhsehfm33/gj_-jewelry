@@ -54,12 +54,12 @@ public class UserService {
     }
 
     public User updateUser(User user) {
-        User newUser = userRepository.findById(user.getId())
-                .orElseThrow(() -> new UserIdNotFoundException(user.getId()));
-
-        userRepository.save(user);
-
-        return newUser;
+        if (userRepository.findById(user.getId()).isPresent()) {
+            return userRepository.save(user);
+        }
+        else {
+            throw new UserIdNotFoundException(user.getId());
+        }
     }
 
     public void deleteUser(Long id) {

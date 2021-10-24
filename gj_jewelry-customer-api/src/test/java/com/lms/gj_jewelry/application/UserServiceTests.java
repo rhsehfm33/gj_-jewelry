@@ -18,9 +18,11 @@ import java.util.Optional;
 import static com.lms.gj_jewelry.test.random.RandomUserGenerator.generateRandomUser;
 import static com.lms.gj_jewelry.test.random.RandomUserGenerator.generateRandomUserList;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 
 @Slf4j
 public class UserServiceTests {
@@ -124,24 +126,16 @@ public class UserServiceTests {
     }
 
     @Test
-    public void testUpdate() {
+    public void testUpdateUser() {
         given(userRepository.findById(any())).willReturn(Optional.of(testUser));
-
-        User updatedTestUser = generateRandomUser();
-        updatedTestUser.setId(testUser.getId());
-
-        log.info("original user : " + testUser.toString());
-        log.info("gonna change user like : " + updatedTestUser.toString());
-
-        userService.updateUser(updatedTestUser);
-
-        log.info("updated user : " + testUser.toString());
-
-        assertThat(testUser.equals(updatedTestUser), is(true));
+        given(userRepository.save(testUser)).willReturn(testUser);
+        User updatedUser = userService.updateUser(testUser);
+        assertNotNull(updatedUser);
+        verify(userRepository).save(any(User.class));
     }
 
     @Test
-    public void testDelete() {
+    public void testDeleteUser() {
         given(userRepository.findById(testUser.getId())).willReturn(Optional.of(testUser));
 
         userService.deleteUser(testUser.getId());
