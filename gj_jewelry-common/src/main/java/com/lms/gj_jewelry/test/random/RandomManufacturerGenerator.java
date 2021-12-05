@@ -5,7 +5,6 @@ import com.lms.gj_jewelry.domain.Manufacturer;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
 
 import static com.lms.gj_jewelry.test.random.RandomStringGenerator.*;
 
@@ -66,7 +65,6 @@ public class RandomManufacturerGenerator {
     }
     
     public static Manufacturer generateRandomManufacturer() {
-        Random random = new Random();
         int id = random.nextInt(1000000);
         String newAccount = generateRandomString(MAX_ACCOUNT_LENGTH, false);
         String newPassword = generateRandomString(MAX_PASSWORD_LENGTH, false);
