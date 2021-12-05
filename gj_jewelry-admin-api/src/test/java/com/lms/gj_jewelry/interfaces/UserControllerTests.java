@@ -1,6 +1,7 @@
 package com.lms.gj_jewelry.interfaces;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.lms.gj_jewelry.GjJewelryAdminApiApplication;
 import com.lms.gj_jewelry.application.UserService;
 import com.lms.gj_jewelry.domain.User;
 import org.junit.Test;
@@ -8,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -24,6 +26,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
+@ContextConfiguration(classes = GjJewelryAdminApiApplication.class)
 @WebMvcTest(UserController.class)
 public class UserControllerTests {
 

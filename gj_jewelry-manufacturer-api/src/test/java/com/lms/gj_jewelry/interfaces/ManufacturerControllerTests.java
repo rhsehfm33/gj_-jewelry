@@ -1,7 +1,9 @@
 package com.lms.gj_jewelry.interfaces;
 
+import com.lms.gj_jewelry.GjJewelryManufacturerApiApplication;
 import com.lms.gj_jewelry.application.ManufacturerService;
 import com.lms.gj_jewelry.domain.Manufacturer;
+import javafx.application.Application;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -25,6 +28,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
+@ContextConfiguration(classes = GjJewelryManufacturerApiApplication.class)
 @WebMvcTest(ManufacturerController.class)
 public class ManufacturerControllerTests {
 
