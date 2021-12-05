@@ -23,10 +23,10 @@ import java.util.Optional;
 @Slf4j
 public class ManufacturerServiceTests {
 
-    private ManufacturerService manufacturerService;
-
     @Mock
     private ManufacturerRepository manufacturerRepository;
+
+    private ManufacturerService manufacturerService;
 
     private Manufacturer testManufacturer;
 
