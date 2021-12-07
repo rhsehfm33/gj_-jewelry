@@ -65,7 +65,7 @@ public class RandomManufacturerGenerator {
     }
     
     public static Manufacturer generateRandomManufacturer() {
-        int id = random.nextInt(1000000);
+        long id = random.nextLong();
         String newAccount = generateRandomString(MAX_ACCOUNT_LENGTH, false);
         String newPassword = generateRandomString(MAX_PASSWORD_LENGTH, false);
         String newEmail = generateRandomUniqueEmail(null, MAX_EMAIL_LENGTH);
@@ -73,7 +73,7 @@ public class RandomManufacturerGenerator {
         String newName = generateRandomString(MAX_NAME_LENGTH, false);
 
         Manufacturer randomManufacturer = Manufacturer.builder()
-                .id((long)id)
+                .id(id)
                 .account(newAccount)
                 .password(newPassword)
                 .phoneNumber(newPhoneNumber)

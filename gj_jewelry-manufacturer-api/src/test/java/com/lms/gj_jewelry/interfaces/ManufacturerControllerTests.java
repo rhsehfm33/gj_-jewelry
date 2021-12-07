@@ -3,7 +3,6 @@ package com.lms.gj_jewelry.interfaces;
 import com.lms.gj_jewelry.GjJewelryManufacturerApiApplication;
 import com.lms.gj_jewelry.application.ManufacturerService;
 import com.lms.gj_jewelry.domain.Manufacturer;
-import javafx.application.Application;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
