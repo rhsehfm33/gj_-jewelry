@@ -6,6 +6,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Where;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -21,6 +22,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(exclude = {"orderDetailList", "manufacturer"})
+@EntityListeners(AuditingEntityListener.class)
 @Where(clause = "deleted = false")
 public class Item {
 
@@ -39,14 +41,14 @@ public class Item {
     @NotEmpty
     private String content;
 
-    @NotEmpty
+    @NotNull
     @Enumerated(EnumType.STRING)
     private ItemCategory category;
 
     private BigDecimal price;
 
     @CreatedDate
-    @NotNull LocalDate createdAt;
+    private LocalDate createdAt;
 
     @LastModifiedDate
     private LocalDate updatedAt;
